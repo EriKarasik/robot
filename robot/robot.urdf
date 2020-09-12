@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+  <robot name="Cleaner">
+    <!--Materials part-->
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <material name="blue">
+    <color rgba="0 0 1 1"/>
+  </material>
+    <!--Base part-->
+    <link name="base_link">
+      <visual>
+        <geometry>
+          <box size="0.8 0.8 0.1"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="fwheels">
+      <visual>
+        <geometry>
+          <cylinder length="0.9" radius="0.05"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="bwheels">
+      <visual>
+        <geometry>
+          <cylinder length="0.9" radius="0.05"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <joint name="baseToFWheels" type="continuous">
+      <parent link="base_link"/>
+      <child link="fwheels"/>
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 1.57075 0" xyz="0 0.4 0"/>
+    </joint>
+    <joint name="baseToBWheels" type="continuous">
+      <parent link="base_link"/>
+      <child link="bwheels"/>
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 1.57075 0" xyz="0 -0.4 0"/>
+    </joint>
+	<!--wheels part-->
+    <link name="rbwheel">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.1"/>
+        </geometry>
+	<material name="black"/>
+      </visual>
+    </link>
+    <link name="rfwheel">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.1"/>
+        </geometry>
+	<material name="black"/>
+      </visual>
+    </link>
+    <link name="lbwheel">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.1"/>
+        </geometry>
+	<material name="black"/>
+      </visual>
+    </link>
+    <link name="lfwheel">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.1"/>
+        </geometry>
+	<material name="black"/>
+      </visual>
+    </link>
+    <joint name="FWheelsToLeft" type="fixed">
+      <parent link="fwheels"/>
+      <child link="lfwheel"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.425"/>
+    </joint>
+    <joint name="FWheelsToRight" type="fixed">
+      <parent link="fwheels"/>
+      <child link="rfwheel"/>
+      <origin rpy="0 0 0" xyz="0 0 0.425"/>
+    </joint>
+    <joint name="BWheelsToLeft" type="fixed">
+      <parent link="bwheels"/>
+      <child link="lbwheel"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.425"/>
+    </joint>
+    <joint name="BWheelsToRight" type="fixed">
+      <parent link="bwheels"/>
+      <child link="rbwheel"/>      
+      <origin rpy="0 0 0" xyz="0 0 0.425"/>
+    </joint>
+	<!--Body Part-->
+    <link name="body">
+      <visual>
+        <geometry>
+          <cylinder length="0.4" radius="0.4"/>
+        </geometry>
+	<material name="blue"/>
+      </visual>
+    </link>
+    <link name="head">
+      <visual>
+        <geometry>
+          <sphere radius="0.4"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="back">
+      <visual>
+        <geometry>
+          <box size="0.8 0.1 0.5"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="fill">
+      <visual>
+        <geometry>
+          <box size="0.8 0.4 0.4"/>
+        </geometry>
+	<material name="blue"/>
+      </visual>
+    </link>
+    <link name="sholders">
+      <visual>
+        <geometry>
+          <cylinder length="0.85" radius="0.05"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <joint name="BaseToBody" type="continuous">
+      <parent link="base_link"/>
+      <child link="body"/>
+      <axis xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 0.05 0.25"/>
+    </joint>
+    <joint name="BodyToHead" type="fixed">
+      <parent link="body"/>
+      <child link="head"/>
+      <origin rpy="0 0 0" xyz="0 0.0 0.2"/>
+    </joint>
+    <joint name="BaseToFill" type="fixed">
+      <parent link="base_link"/>
+      <child link="fill"/>
+      <origin rpy="0 0 0" xyz="0 -0.15 0.25"/>
+    </joint>
+    <joint name="BaseToBack" type="fixed">
+      <parent link="base_link"/>
+      <child link="back"/>
+      <origin rpy="0 0 0" xyz="0 -0.4 0.3"/>
+    </joint>
+    <joint name="BackToSholders" type="continuous">
+      <parent link="back"/>
+      <child link="sholders"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="1000.0" lower="0.0" upper="1.0" velocity="0.5"/>
+      <origin rpy="0 1.57075 0" xyz="0 0 0.25"/>
+    </joint>
+	<!--Arm Part-->
+    <link name="lsholder">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.075"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="rsholder">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.075"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="lwrist">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.075"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="rwrist">
+      <visual>
+        <geometry>
+          <cylinder length="0.05" radius="0.075"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="rarm">
+      <visual>
+        <geometry>
+          <box size="0.05 0.15 1.2"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="larm">
+      <visual>
+        <geometry>
+          <box size="0.05 0.15 1.2"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <joint name="SholdersToL" type="fixed">
+      <parent link="sholders"/>
+      <child link="lsholder"/>
+      <origin rpy="0 0 1.17" xyz="0 0 -0.425"/>
+    </joint>
+    <joint name="SholdersToR" type="fixed">
+      <parent link="sholders"/>
+      <child link="rsholder"/>
+      <origin rpy="0 0 1.17" xyz="0 0 0.425"/>
+    </joint>
+    <joint name="RSholderToArm" type="fixed">
+      <parent link="rsholder"/>
+      <child link="rarm"/>
+      <origin rpy="0 1.57075 0" xyz="0.6 0 0"/>
+    </joint>
+    <joint name="LSholderToArm" type="fixed">
+      <parent link="lsholder"/>
+      <child link="larm"/>
+      <origin rpy="0 1.57075 0" xyz="0.6 0 0"/>
+    </joint>
+    <joint name="RArmToWrist" type="fixed">
+      <parent link="rarm"/>
+      <child link="rwrist"/>
+      <origin rpy="0 1.57075 0" xyz="0 0 0.6"/>
+    </joint>
+    <joint name="LArmToWrist" type="fixed">
+      <parent link="larm"/>
+      <child link="lwrist"/>
+      <origin rpy="0 1.57075 0" xyz="0 0 0.6"/>
+    </joint>
+	<!--tool part-->
+    <link name="axis">
+      <visual>
+        <geometry>
+          <cylinder length="0.9" radius="0.05"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <link name="tool">
+      <visual>
+        <geometry>
+          <cylinder length="0.8" radius="0.15"/>
+        </geometry>
+	<material name="white"/>
+      </visual>
+    </link>
+    <joint name="AxisToL" type="fixed">
+      <parent link="lwrist"/>
+      <child link="axis"/>
+      <origin rpy="0 0 0" xyz="0 0 0.425"/>
+    </joint>
+    <joint name="AxisToR" type="fixed">
+      <parent link="rwrist"/>
+      <child link="axis"/>
+      <origin rpy="0 0 0" xyz="0 0 0.425"/>
+    </joint>
+    <joint name="AxisToTool" type="fixed">
+      <parent link="axis"/>
+      <child link="tool"/>
+      <!--axis xyz="0 0 1"/-->
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+  </robot>

@@ -1,0 +1,68 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"back" [label="back"];
+"sholders" [label="sholders"];
+"lsholder" [label="lsholder"];
+"larm" [label="larm"];
+"lwrist" [label="lwrist"];
+"axis" [label="axis"];
+"tool" [label="tool"];
+"rsholder" [label="rsholder"];
+"rarm" [label="rarm"];
+"rwrist" [label="rwrist"];
+"axis" [label="axis"];
+"tool" [label="tool"];
+"body" [label="body"];
+"head" [label="head"];
+"fill" [label="fill"];
+"bwheels" [label="bwheels"];
+"lbwheel" [label="lbwheel"];
+"rbwheel" [label="rbwheel"];
+"fwheels" [label="fwheels"];
+"lfwheel" [label="lfwheel"];
+"rfwheel" [label="rfwheel"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "BaseToBack" [label="xyz: 0 -0.4 0.3 \nrpy: 0 -0 0"]
+"BaseToBack" -> "back"
+"back" -> "BackToSholders" [label="xyz: 0 0 0.25 \nrpy: 0 1.5708 -0"]
+"BackToSholders" -> "sholders"
+"sholders" -> "SholdersToL" [label="xyz: 0 0 -0.425 \nrpy: 0 -0 1.17"]
+"SholdersToL" -> "lsholder"
+"lsholder" -> "LSholderToArm" [label="xyz: 0.6 0 0 \nrpy: 0 1.5708 -0"]
+"LSholderToArm" -> "larm"
+"larm" -> "LArmToWrist" [label="xyz: 0 0 0.6 \nrpy: 0 1.5708 -0"]
+"LArmToWrist" -> "lwrist"
+"lwrist" -> "AxisToR" [label="xyz: 0 0 0.425 \nrpy: 0 -0 0"]
+"AxisToR" -> "axis"
+"axis" -> "AxisToTool" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"AxisToTool" -> "tool"
+"sholders" -> "SholdersToR" [label="xyz: 0 0 0.425 \nrpy: 0 -0 1.17"]
+"SholdersToR" -> "rsholder"
+"rsholder" -> "RSholderToArm" [label="xyz: 0.6 0 0 \nrpy: 0 1.5708 -0"]
+"RSholderToArm" -> "rarm"
+"rarm" -> "RArmToWrist" [label="xyz: 0 0 0.6 \nrpy: 0 1.5708 -0"]
+"RArmToWrist" -> "rwrist"
+"rwrist" -> "AxisToR" [label="xyz: 0 0 0.425 \nrpy: 0 -0 0"]
+"AxisToR" -> "axis"
+"axis" -> "AxisToTool" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"AxisToTool" -> "tool"
+"base_link" -> "BaseToBody" [label="xyz: 0 0.05 0.25 \nrpy: 0 -0 0"]
+"BaseToBody" -> "body"
+"body" -> "BodyToHead" [label="xyz: 0 0 0.2 \nrpy: 0 -0 0"]
+"BodyToHead" -> "head"
+"base_link" -> "BaseToFill" [label="xyz: 0 -0.15 0.25 \nrpy: 0 -0 0"]
+"BaseToFill" -> "fill"
+"base_link" -> "baseToBWheels" [label="xyz: 0 -0.4 0 \nrpy: 0 1.5708 -0"]
+"baseToBWheels" -> "bwheels"
+"bwheels" -> "BWheelsToLeft" [label="xyz: 0 0 -0.425 \nrpy: 0 -0 0"]
+"BWheelsToLeft" -> "lbwheel"
+"bwheels" -> "BWheelsToRight" [label="xyz: 0 0 0.425 \nrpy: 0 -0 0"]
+"BWheelsToRight" -> "rbwheel"
+"base_link" -> "baseToFWheels" [label="xyz: 0 0.4 0 \nrpy: 0 1.5708 -0"]
+"baseToFWheels" -> "fwheels"
+"fwheels" -> "FWheelsToLeft" [label="xyz: 0 0 -0.425 \nrpy: 0 -0 0"]
+"FWheelsToLeft" -> "lfwheel"
+"fwheels" -> "FWheelsToRight" [label="xyz: 0 0 0.425 \nrpy: 0 -0 0"]
+"FWheelsToRight" -> "rfwheel"
+}
